@@ -11,6 +11,10 @@ public class TicTacToeBoard {
     private static final int BOARD_SIZE = 3;
 
     private GameMarker[][] board;
+    
+    public GameMarker[][] getBoard() {
+        return this.board;
+    }
 
     public TicTacToeBoard() {
         this.board = new GameMarker[BOARD_SIZE][BOARD_SIZE];
