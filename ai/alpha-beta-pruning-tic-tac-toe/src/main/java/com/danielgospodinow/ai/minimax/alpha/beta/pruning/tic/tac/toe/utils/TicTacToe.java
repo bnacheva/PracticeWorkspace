@@ -15,7 +15,7 @@ public class TicTacToe {
             possibleMoves.putIfAbsent(score, freeSpace);
         });
 
-        return possibleMoves.lastEntry().getValue();
+        return possibleMoves.firstEntry().getValue();
     }
 
     private static int minimax(TicTacToeBoard board, GameMarker marker, int depth, int alpha, int beta) {
@@ -41,7 +41,7 @@ public class TicTacToe {
                 throw new RuntimeException("Something odd happened");
             }
         } else {
-            if(marker == GameMarker.X) {
+            if(marker == GameMarker.O) {
                 // Maximizing
                 int bestScore = Integer.MIN_VALUE;
 
@@ -60,7 +60,7 @@ public class TicTacToe {
                 }
 
                 return bestScore;
-            } else if(marker == GameMarker.O) {
+            } else if(marker == GameMarker.X) {
                 // Minimizing
                 int bestScore = Integer.MAX_VALUE;
 
