@@ -21,7 +21,7 @@ public class TicTacToeGame {
                 String[] position = scanner.nextLine().split(",");
                 Position inputPosition = new Position(Integer.parseInt(position[0]) - 1,
                         Integer.parseInt(position[1]) - 1);
-                if (this.board.getBoard()[inputPosition.getRow()][inputPosition.getCol()] != Marker.EMPTY) {
+                if (this.board.getBoard()[inputPosition.getRow()][inputPosition.getCol()] == Marker.EMPTY) {
                     this.board.setMarker(GameMarker.X, inputPosition);
                 } else {
                     throw new IllegalArgumentException("This space is already filled!");
@@ -32,7 +32,7 @@ public class TicTacToeGame {
 
                 if (board.getState() == GameState.UNFINISHED) {
                     Position aiPosition = TicTacToe.getNextMoveFromAI(board, GameMarker.O);
-                    if (this.board.getBoard()[aiPosition.getRow()][aiPosition.getCol()] != Marker.EMPTY) {
+                    if (this.board.getBoard()[aiPosition.getRow()][aiPosition.getCol()] == Marker.EMPTY) {
                         this.board.setMarker(GameMarker.O, aiPosition);
                     } else {
                         throw new IllegalArgumentException("This space is already filled!");
@@ -48,7 +48,7 @@ public class TicTacToeGame {
         } else {
             while (board.getState() == GameState.UNFINISHED) {
                 Position aiPosition = TicTacToe.getNextMoveFromAI(board, GameMarker.X);
-                if (this.board.getBoard()[aiPosition.getRow()][aiPosition.getCol()] != Marker.EMPTY) {
+                if (this.board.getBoard()[aiPosition.getRow()][aiPosition.getCol()] == Marker.EMPTY) {
                     this.board.setMarker(GameMarker.X, aiPosition);
                 } else {
                     throw new IllegalArgumentException("This space is already filled!");
@@ -63,7 +63,7 @@ public class TicTacToeGame {
                     String[] position = scanner.nextLine().split(",");
                     Position inputPosition = new Position(Integer.parseInt(position[0]) - 1,
                             Integer.parseInt(position[1]) - 1);
-                    if (this.board.getBoard()[inputPosition.getRow()][inputPosition.getCol()] != Marker.EMPTY) {
+                    if (this.board.getBoard()[inputPosition.getRow()][inputPosition.getCol()] == Marker.EMPTY) {
                         this.board.setMarker(GameMarker.O, inputPosition);
                     } else {
                         throw new IllegalArgumentException("This space is already filled!");
