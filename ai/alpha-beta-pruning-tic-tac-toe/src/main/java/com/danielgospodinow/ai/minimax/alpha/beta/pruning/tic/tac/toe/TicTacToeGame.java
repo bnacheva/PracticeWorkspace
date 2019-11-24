@@ -21,14 +21,22 @@ public class TicTacToeGame {
                 String[] position = scanner.nextLine().split(",");
                 Position inputPosition = new Position(Integer.parseInt(position[0]) - 1,
                         Integer.parseInt(position[1]) - 1);
-                board.setMarker(GameMarker.X, inputPosition);
+                if (this.board.getBoard()[inputPosition.getRow()][inputPosition.getCol()] != Marker.EMPTY) {
+                    this.board.setMarker(GameMarker.X, inputPosition);
+                } else {
+                    throw new IllegalArgumentException("This space is already filled!");
+                }
 
                 board.print();
                 System.out.println();
 
                 if (board.getState() == GameState.UNFINISHED) {
                     Position aiPosition = TicTacToe.getNextMoveFromAI(board, GameMarker.O);
-                    board.setMarker(GameMarker.O, aiPosition);
+                    if (this.board.getBoard()[aiPosition.getRow()][aiPosition.getCol()] != Marker.EMPTY) {
+                        this.board.setMarker(GameMarker.O, aiPosition);
+                    } else {
+                        throw new IllegalArgumentException("This space is already filled!");
+                    }
 
                     System.out.println("AI moves:");
                     board.print();
@@ -40,7 +48,11 @@ public class TicTacToeGame {
         } else {
             while (board.getState() == GameState.UNFINISHED) {
                 Position aiPosition = TicTacToe.getNextMoveFromAI(board, GameMarker.X);
-                board.setMarker(GameMarker.X, aiPosition);
+                if (this.board.getBoard()[aiPosition.getRow()][aiPosition.getCol()] != Marker.EMPTY) {
+                    this.board.setMarker(GameMarker.X, aiPosition);
+                } else {
+                    throw new IllegalArgumentException("This space is already filled!");
+                }
 
                 System.out.println("AI moves:");
                 board.print();
@@ -51,7 +63,11 @@ public class TicTacToeGame {
                     String[] position = scanner.nextLine().split(",");
                     Position inputPosition = new Position(Integer.parseInt(position[0]) - 1,
                             Integer.parseInt(position[1]) - 1);
-                    board.setMarker(GameMarker.O, inputPosition);
+                    if (this.board.getBoard()[inputPosition.getRow()][inputPosition.getCol()] != Marker.EMPTY) {
+                        this.board.setMarker(GameMarker.O, inputPosition);
+                    } else {
+                        throw new IllegalArgumentException("This space is already filled!");
+                    }
 
                     board.print();
                     System.out.println();
